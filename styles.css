@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+:root, :root.light{
+    --font-color: #264175;
+    --background-color: #C2EAF2;
+    --menu-color: #A1EBD8;
+    --border-color: rgba(197, 245, 210, 0.5);
+    --decklist-color: #E4CBF5;
+    --times-color: #AA59C2;
+}
+:root.dark{
+    --font-color: #46B5D1;
+    --background-color: #151965;
+    --menu-color: #32407B;
+    --border-color: #515585;
+    --decklist-color: #2C74B3;
+    --times-color: #144272;
+}
+
+body{
+    background-color: var(--background-color);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    transition: background 0.2s linear;
+    color: var(--font-color);
+}
+/*Boton de modo oscuro*/
+#dark-mode-buttom{
+    padding-left: 2rem;
+}
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.label {
+width: 38px;
+height: 14px;
+background-color:#111;
+display: flex;
+border-radius:50px;
+align-items: center;
+justify-content: space-between;
+padding: 5px;
+position: relative;
+transform: scale(1.5);
+}
+
+.ball {
+    font-size: 1rem;
+    position: absolute;
+    transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball{
+transform: translateX(24px);
+}
+
+.fa-moon {
+    color: pink;
+    font-size: 0.75rem;
+}
+
+.fa-sun {
+color: yellow;
+font-size: 0.75rem;
+}
+
+/*Principal*/
+
+main{
+    margin: 0;
+    display: block;
+}
+
+/*Menu*/
+
+/*burger*/
+.toggle-button{
+    font-size: 2rem;
+    padding: 1rem 2rem;
+}
+
+.toggle-button label{
+    text-align: right;
+    display: none;
+}
+.toggle-button #toggle{
+    display: none;
+}
+
+#navbar{
+    background-color: var(--menu-color);
+    position: fixed;
+    height: 100%;
+    border-right: solid;
+    border-color: var(--border-color);
+    width: 12rem;
+}
+#navbar ul{
+    height: 100%;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#navbar li{
+    border-top: .0625rem solid var(--border-color);
+    list-style: none;
+    position: relative;
+    width: 100%;
+}
+li{
+    display: list-item;
+}
+#navbar a{
+    display: block;
+    padding: .625rem 1.875rem;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--font-color);
+}
+#navbar a:hover{
+    background-color: var(--border-color);
+}
+/*Contenido*/
+
+header{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: .625rem;
+    text-align: center;
+}
+#main-doc{
+    position: absolute;
+    margin-left: 14.255rem;
+    padding: 1.25rem;
+    margin-bottom: 110px;
+}
+#main-doc header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    margin: 0;
+}
+section article{
+    margin: .9375rem;
+}
+section article .anio{
+    font-size: 1.75rem;
+}
+/*Imagen*/
+.campeon-card header figure img{
+    width: 50%;
+}
+
+/*Decklist*/
+.monster, .magic, .traps, .side-deck{
+    background-color: var(--decklist-color);
+    border-radius: 2rem;
+    padding-bottom: 2rem;
+    border: 1px solid var(--times-color) ;
+}
+.decklist span{
+    color: var(--times-color);
+}
+.decklist span::before{
+    content: "  ";
+}
+section li{
+    margin: .9375rem 0 0 1.25rem;
+    list-style-type: disc;
+}
+.data{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.campeon-card{
+    display: flex;
+    flex-direction: column;
+}
+.campeon-card .decklist{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+.decklist ul{
+    font-size: 1rem;
+}
+.type-card{
+    padding-left: 2rem;
+    font-size: 1.25rem;
+}
+.name-champion{
+    padding-left: 0.5rem;
+}
+
+/*Tool tip sobre la bandera*/
+.tooltip{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    font-size: 1rem;
+    background-color: var(--font-color);
+    color: var(--background-color);
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 2rem;
+    z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+@media(max-width: 768px){
+    .toggle-button{
+        padding: 0;
+        text-align: center;
+    }
+    .toggle-button label {
+        display: block !important;
+    }
+    #navbar{
+        display: none;
+        position: relative;
+        flex-direction: column;
+        border: 1px solid var(--border-color);
+        width: 100%;
+    }
+    .main-menu {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    } 
+    #intro{
+        text-align: center;
+    }
+
+    #main-doc{
+        margin-left: 0;
+        position: relative;
+    }
+    #main-doc #img-div img{
+        width: 100vw;
+    }
+    #main-doc header{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    section article ul{
+        padding-left: 0.025rem;
+    }
+    section article ul ul{
+        padding-left: 0.5rem;
+    }
+    .campeon-card .decklist{
+        grid-template-columns: 1fr;
+    }
+    .monster, .magic, .traps, .side-deck{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .type-card{
+        margin: 0;
+        padding: 0;
+        padding-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .decklist ul li{
+        list-style-type: none;
+    }
+}
